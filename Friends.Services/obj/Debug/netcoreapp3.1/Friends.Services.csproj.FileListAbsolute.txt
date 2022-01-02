@@ -1,0 +1,11 @@
+C:\Users\sergi\source\repos\Friends\Friends.Services\bin\Debug\netcoreapp3.1\Friends.Services.deps.json
+C:\Users\sergi\source\repos\Friends\Friends.Services\bin\Debug\netcoreapp3.1\Friends.Services.dll
+C:\Users\sergi\source\repos\Friends\Friends.Services\bin\Debug\netcoreapp3.1\Friends.Services.pdb
+C:\Users\sergi\source\repos\Friends\Friends.Services\bin\Debug\netcoreapp3.1\Friends.Core.dll
+C:\Users\sergi\source\repos\Friends\Friends.Services\bin\Debug\netcoreapp3.1\Friends.Core.pdb
+C:\Users\sergi\source\repos\Friends\Friends.Services\obj\Debug\netcoreapp3.1\Friends.Services.csprojAssemblyReference.cache
+C:\Users\sergi\source\repos\Friends\Friends.Services\obj\Debug\netcoreapp3.1\Friends.Services.AssemblyInfoInputs.cache
+C:\Users\sergi\source\repos\Friends\Friends.Services\obj\Debug\netcoreapp3.1\Friends.Services.AssemblyInfo.cs
+C:\Users\sergi\source\repos\Friends\Friends.Services\obj\Debug\netcoreapp3.1\Friends.Services.csproj.CopyComplete
+C:\Users\sergi\source\repos\Friends\Friends.Services\obj\Debug\netcoreapp3.1\Friends.Services.dll
+C:\Users\sergi\source\repos\Friends\Friends.Services\obj\Debug\netcoreapp3.1\Friends.Services.pdb
