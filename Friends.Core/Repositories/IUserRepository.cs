@@ -7,6 +7,6 @@ namespace Friends.Core.Repositories
     public interface IUserRepository : IRepository<User>
     {
         Task<IEnumerable<User>> GetAllWithMessagesAsync();
-        Task<User> GetWithMessagesByIdAsync();
+        Task<User> GetWithMessagesByIdAsync(int id);
     }
 }
