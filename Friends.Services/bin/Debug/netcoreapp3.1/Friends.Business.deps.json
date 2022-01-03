@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Friends.Business/1.0.0": {
+        "dependencies": {
+          "Friends.Core": "1.0.0"
+        },
+        "runtime": {
+          "Friends.Business.dll": {}
+        }
+      },
+      "Friends.Core/1.0.0": {
+        "runtime": {
+          "Friends.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Friends.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Friends.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

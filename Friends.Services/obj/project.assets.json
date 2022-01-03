@@ -33,9 +33,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sergi\\source\\repos\\Friends\\Friends.Services\\Friends.Services.csproj",
-      "projectName": "Friends.Services",
-      "projectPath": "C:\\Users\\sergi\\source\\repos\\Friends\\Friends.Services\\Friends.Services.csproj",
+      "projectUniqueName": "C:\\Users\\sergi\\source\\repos\\Friends\\Friends.Services\\Friends.Business.csproj",
+      "projectName": "Friends.Business",
+      "projectPath": "C:\\Users\\sergi\\source\\repos\\Friends\\Friends.Services\\Friends.Business.csproj",
       "packagesPath": "C:\\Users\\sergi\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\sergi\\source\\repos\\Friends\\Friends.Services\\obj\\",
       "projectStyle": "PackageReference",
