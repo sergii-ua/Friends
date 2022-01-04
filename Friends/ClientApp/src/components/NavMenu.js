@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import {Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -28,6 +29,14 @@ export class NavMenu extends Component {
           <Container>
             <NavbarBrand tag={Link} to="/">Friends</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+            <Form className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Search for Friends"
+              className="me-2"
+              aria-label="Search"
+            />
+            </Form>
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
                 <NavItem>
@@ -41,6 +50,9 @@ export class NavMenu extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/messages">Messages</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/users">Users</NavLink>
                 </NavItem>
               </ul>
             </Collapse>
