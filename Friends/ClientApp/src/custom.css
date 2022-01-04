@@ -1,14 +1,46 @@
 /* Provide sufficient contrast against white background */
+
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 code {
-  color: #E01A76;
+    color: #E01A76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.form-create-user {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-create-user form {
+    width: 50%;
+    background-color: #fff;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    position: relative;
+}
+.form-create-user form input {
+    width: 100%;
+}
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }

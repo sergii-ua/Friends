@@ -21,7 +21,11 @@ export class NavMenu extends Component {
       collapsed: !this.state.collapsed
     });
   }
-
+async onChangeValue(e) {
+  const response = await fetch(`/api/User/search?searchTerm=${e.target.value}`);
+  const data = await response.json();
+console.log(data)
+};
   render () {
     return (
       <header>
@@ -35,6 +39,7 @@ export class NavMenu extends Component {
               placeholder="Search for Friends"
               className="me-2"
               aria-label="Search"
+              onChange={this.onChangeValue}
             />
             </Form>
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
