@@ -8,5 +8,6 @@ namespace Friends.Core.Repositories
     {
         Task<IEnumerable<User>> GetAllWithMessagesAsync();
         Task<User> GetWithMessagesByIdAsync(int id);
+        Task<IEnumerable<User>> SearchUsers(string searchTerm);
     }
 }

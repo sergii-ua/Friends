@@ -3,6 +3,7 @@ using Friends.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +30,13 @@ namespace Friends.Data.Repositories
                 .Include(m => m.MessagesSent)
                 .Include(n=>n.MessagesReceived)
                 .SingleOrDefaultAsync(m => m.UserId == id);
+        }
+
+        public async Task<IEnumerable<User>> SearchUsers(string searchTerm)
+        {
+            return await _dbContext.Users
+                .Where(x => (x.FirstName.Contains(searchTerm))||(x.LastName.Contains(searchTerm)))
+                .ToListAsync();
         }
     }
 }

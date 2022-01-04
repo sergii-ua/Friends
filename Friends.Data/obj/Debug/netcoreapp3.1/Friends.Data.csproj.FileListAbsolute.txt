@@ -1,4 +1,6 @@
 C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.deps.json
+C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.runtimeconfig.json
+C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.runtimeconfig.dev.json
 C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.dll
 C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.pdb
 C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Core.dll
@@ -9,5 +11,3 @@ C:\Users\sergi\source\repos\Friends\Friends.Data\obj\Debug\netcoreapp3.1\Friends
 C:\Users\sergi\source\repos\Friends\Friends.Data\obj\Debug\netcoreapp3.1\Friends.Data.csproj.CopyComplete
 C:\Users\sergi\source\repos\Friends\Friends.Data\obj\Debug\netcoreapp3.1\Friends.Data.dll
 C:\Users\sergi\source\repos\Friends\Friends.Data\obj\Debug\netcoreapp3.1\Friends.Data.pdb
-C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.runtimeconfig.json
-C:\Users\sergi\source\repos\Friends\Friends.Data\bin\Debug\netcoreapp3.1\Friends.Data.runtimeconfig.dev.json

@@ -40,6 +40,11 @@ namespace Friends.Business.Services
             return await _unitOfWork.Users.GetByIdAsync(id);
         }
 
+        public async Task<IEnumerable<User>> SearchUsers(string searchTerm)
+        {
+            return await _unitOfWork.Users.SearchUsers(searchTerm);
+        }
+
         public async Task UpdateUser(User userToBeUpdated, User user)
         {
             userToBeUpdated.FirstName = user.FirstName;

@@ -93,5 +93,13 @@ namespace Friends.Controllers
 
             return NoContent();
         }
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchUsers(string searchTerm)
+        {
+            var users = await _userService.SearchUsers(searchTerm);
+            var userResource = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
+
+            return Ok(userResource);
+        }
     }
 }
