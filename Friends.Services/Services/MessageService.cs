@@ -29,6 +29,11 @@ namespace Friends.Business.Services
             await _unitOfWork.ComitAsync();
         }
 
+        public Task<IEnumerable<Message>> GetAllMessagesWithRecepients()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Message>> GetAllWithUser()
         {
             return await _unitOfWork.Messages.GetAllWithUserAsync();

@@ -28,8 +28,8 @@ export class Messages extends Component {
             <tr key={messages.messageid}>
               <td>{messages.messageId}</td>
               <td>{messages.messageBody}</td>
-              <td>{messages.messageFromId}</td>
-              <td>{messages.messageToId}</td>
+              <td>{messages.sender.firstName} {messages.sender.lastName}</td>
+              <td>{messages.recepient.firstName} {messages.recepient.lastName}</td>
             </tr>
           )}
         </tbody>

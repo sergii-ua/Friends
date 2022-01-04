@@ -18,14 +18,16 @@ namespace Friends.Data.Repositories
         public async Task<IEnumerable<User>> GetAllWithMessagesAsync()
         {
             return await _dbContext.Users
-                .Include(u => u.Messages)
+                .Include(u => u.MessagesSent)
+                .Include(m=>m.MessagesReceived)
                 .ToListAsync();
         }
 
         public async Task<User> GetWithMessagesByIdAsync(int id)
         {
             return await _dbContext.Users
-                .Include(m => m.Messages)
+                .Include(m => m.MessagesSent)
+                .Include(n=>n.MessagesReceived)
                 .SingleOrDefaultAsync(m => m.UserId == id);
         }
     }

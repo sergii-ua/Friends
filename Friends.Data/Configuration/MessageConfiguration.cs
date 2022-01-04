@@ -21,13 +21,15 @@ namespace Friends.Data.Configuration
                 .IsRequired()
                 .HasMaxLength(1000);
             builder
-                .HasOne(m => m.User)
-                .WithMany(m => m.Messages)
-                .HasForeignKey(m => m.MessageFromId);
+                .HasOne(m => m.Sender)
+                .WithMany(m => m.MessagesSent)
+                .HasForeignKey(m => m.MessageFromId)
+                .OnDelete(DeleteBehavior.Restrict);
             builder
-                .HasOne(m => m.User)
-                .WithMany(m => m.Messages)
-                .HasForeignKey(m => m.MessageToId);
+                .HasOne(m => m.Recepient)
+                .WithMany(m => m.MessagesReceived)
+                .HasForeignKey(m => m.MessageToId)
+                .OnDelete(DeleteBehavior.Restrict);
             builder
                 .ToTable("Messages");
         }

@@ -31,6 +31,7 @@ namespace Friends.Controllers
                 IEnumerable<MessageResource>>(messages);
             return Ok(messageResources);
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<MessageResource>> GetMessageById(int id)
         {

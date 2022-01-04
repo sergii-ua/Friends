@@ -10,6 +10,8 @@ namespace Friends.Core.Models
         public string MessageBody { get; set; }
         public int MessageFromId { get; set; }
         public int MessageToId { get; set; }
-        public User User { get; set; }
+        public User Sender { get; set; }
+        public User Recepient { get; set; }
+
     }
 }

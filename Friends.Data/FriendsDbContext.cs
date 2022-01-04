@@ -24,6 +24,7 @@ namespace Friends.Data
                 .ApplyConfiguration(new MessageConfiguration());
             modelBuilder
                 .ApplyConfiguration(new UserConfiguration());
+
         }
     }
 }

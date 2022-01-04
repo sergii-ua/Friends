@@ -9,11 +9,14 @@ namespace Friends.Core.Models
     {
         public User()
         {
-            Messages = new Collection<Message>();
+            MessagesSent = new Collection<Message>();
+            MessagesReceived = new Collection<Message>();
         }
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<Message> Messages { get; set; }
+        public ICollection<Message> MessagesSent { get; set; }
+        public ICollection<Message> MessagesReceived { get; set; }
+
     }
 }

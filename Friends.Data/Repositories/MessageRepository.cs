@@ -16,10 +16,13 @@ namespace Friends.Data.Repositories
         {
             _dbContext = context;
         }
+
+
         public async Task<IEnumerable<Message>> GetAllWithUserAsync()
         {
             return await _dbContext.Messages
-                .Include(m => m.User)
+                .Include(m => m.Sender)
+                .Include(n=>n.Recepient)
                 .ToListAsync();
         }
 
@@ -34,7 +37,7 @@ namespace Friends.Data.Repositories
         public async Task<int> GetMessageCountByUserId(int userId)
         {
             return await _dbContext.Messages
-                .Include(m => m.User)
+                .Include(m => m.Sender)
                 .Where(m => m.MessageFromId == userId)
                 .CountAsync();
         }

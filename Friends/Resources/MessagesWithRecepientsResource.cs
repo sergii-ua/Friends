@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace Friends.Resources
 {
-    public class MessageResource
+    public class MessagesWithRecepientsResource
     {
         public int MessageId { get; set; }
         public string MessageBody { get; set; }
-        public int MessageFromId { get; set; }
-        public int MessageToId { get; set; }
-        public UserResource Sender { get; set; }
-        public UserResource Recepient { get; set; }
+        public string Sender { get; set; }
+        public string Recepient { get; set; }
 
     }
 }
