@@ -1,30 +1,32 @@
 import React, { Component, useState } from 'react';
 
-export class CreateUser extends Component {
+export class SignIn extends Component {
   //static displayName = CreateUser.name;
 
   constructor(props) {
     super(props);
-    this.state = { firstName: null, lastName: null };
-    this.createUser = this.createUser.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.updateInputFirst = this.updateInputFirst.bind(this);
-    this.updateInputLast = this.updateInputLast.bind(this);
+    this.state = { Email: null, Password: null };
+    this.signIn = this.signIn.bind(this);
+    //this.handleClick = this.handleClick.bind(this);
+    this.updateEmail = this.updateEmail.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
   }
 
   componentDidMount() {
     //this.populateWeatherData();
   }
-createUser () {
+signIn () {
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
-  const userObj = { firstName:this.state.firstName, lastName:this.state.lastName };
-    fetch('https://localhost:44332/api/User', {
+  const userObj = { Email:this.state.Email, Password:this.state.Password };
+  console.log(userObj);
+    fetch('https://localhost:44332/api/Auth/SignIn', {
       method: 'POST',
       headers: {"Content-Type": "application/json" },
       body: JSON.stringify(userObj)
     }).then(()=> {
-      console.log("a new user is created");
+      console.log("logged in");
+      
     })
   console.log('FORM SUBMIT');
 }
@@ -33,30 +35,31 @@ handleClick(){
   console.log('Success!')
 }
 
-updateInputFirst(event){
-  this.setState({firstName : event.target.value})
+updateEmail(event){
+  this.setState({Email : event.target.value})
+  console.log(event.target.value);
   }
-  updateInputLast(event){
-    this.setState({lastName : event.target.value})
+  updatePassword(event){
+    this.setState({Password : event.target.value})
     }
 
   render() {
     const {closeModal}=this.props;
     console.log(closeModal);
     return (
-      <div className="form-create-user">
-        <div className='button__container'>
+      <div className="form-signin">
+        {/* <div className='button__container'>
         <button className='button' onClick={this.handleClick}>
           Click Me
         </button>
-      </div>
-        <form onSubmit={this.createUser}>
+      </div> */}
+        <form onSubmit={this.signIn}>
           <div className="close" onClick={closeModal}>X</div>
           <div>
-            <input type="text" placeholder="First Name" onChange={this.updateInputFirst}/>
+            <input type="email" placeholder="Email" onChange={this.updateEmail}/>
           </div>
           <div>
-            <input type="text" placeholder="Last Name" onChange={this.updateInputLast} />
+            <input type="text" placeholder="Password" onChange={this.updatePassword} />
           </div>
           <button>Create</button>
         </form>

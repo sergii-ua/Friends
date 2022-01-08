@@ -1,8 +1,8 @@
 C:\Users\sergi\source\repos\Friends\Friends.Core\bin\Debug\netcoreapp3.1\Friends.Core.deps.json
 C:\Users\sergi\source\repos\Friends\Friends.Core\bin\Debug\netcoreapp3.1\Friends.Core.dll
 C:\Users\sergi\source\repos\Friends\Friends.Core\bin\Debug\netcoreapp3.1\Friends.Core.pdb
-C:\Users\sergi\source\repos\Friends\Friends.Core\obj\Debug\netcoreapp3.1\Friends.Core.csprojAssemblyReference.cache
 C:\Users\sergi\source\repos\Friends\Friends.Core\obj\Debug\netcoreapp3.1\Friends.Core.AssemblyInfoInputs.cache
 C:\Users\sergi\source\repos\Friends\Friends.Core\obj\Debug\netcoreapp3.1\Friends.Core.AssemblyInfo.cs
 C:\Users\sergi\source\repos\Friends\Friends.Core\obj\Debug\netcoreapp3.1\Friends.Core.dll
 C:\Users\sergi\source\repos\Friends\Friends.Core\obj\Debug\netcoreapp3.1\Friends.Core.pdb
+C:\Users\sergi\source\repos\Friends\Friends.Core\obj\Debug\netcoreapp3.1\Friends.Core.csprojAssemblyReference.cache

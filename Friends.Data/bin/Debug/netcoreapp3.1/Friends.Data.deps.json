@@ -1143,6 +1143,9 @@
         }
       },
       "Friends.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Stores": "5.0.13"
+        },
         "runtime": {
           "Friends.Core.dll": {}
         }

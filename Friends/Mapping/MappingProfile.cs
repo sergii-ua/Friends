@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Friends.Core.Models;
+using Friends.Core.Models.Auth;
 using Friends.Resources;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ namespace Friends.Mapping
             //Save
             CreateMap<SaveUserResource, User>();
             CreateMap<SaveMessageResource, Message>();
+
+            //Account
+            CreateMap<AccountSignUpResource, Account>()
+                .ForMember(u => u.UserName, opt => opt.MapFrom(ur => ur.Email));
         }
     }
 }

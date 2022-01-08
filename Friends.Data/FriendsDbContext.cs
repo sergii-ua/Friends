@@ -1,5 +1,7 @@
 ﻿using Friends.Core.Models;
+using Friends.Core.Models.Auth;
 using Friends.Data.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Text;
 
 namespace Friends.Data
 {
-    public class FriendsDbContext : DbContext
+    public class FriendsDbContext : IdentityDbContext<Account, Role, Guid>
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Message> Messages { get; set; }

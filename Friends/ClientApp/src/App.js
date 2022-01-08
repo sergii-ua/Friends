@@ -6,6 +6,7 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { Messages } from './components/Messages'
 import { Users } from './components/Users'
+import {SignIn } from './components/SignIn'
 
 import './custom.css'
 
@@ -20,6 +21,7 @@ export default class App extends Component {
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/messages' component={Messages} />
         <Route path='/users' component={Users} />
+        <Route path='/signin' component={SignIn} />
       </Layout>
     );
   }

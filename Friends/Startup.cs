@@ -1,10 +1,14 @@
 using Friends.Business.Services;
 using Friends.Core;
+using Friends.Core.Models.Auth;
 using Friends.Core.Services;
 using Friends.Data;
+using Friends.Extensions;
+using Friends.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,11 +29,15 @@ namespace Friends
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var jwtSettings = Configuration.GetSection("Jwt").Get<JwtSettings>();
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<FriendsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Default"), x =>
                 x.MigrationsAssembly("Friends.Data")));
+            services.AddIdentity<Account, Role>()
+                .AddEntityFrameworkStores<FriendsDbContext>()
+                .AddDefaultTokenProviders();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMessageService, MessageService>();
             services.AddSwaggerGen(options =>
@@ -37,6 +45,9 @@ namespace Friends
             { Title = "Friends", Version = "1.0" }));
 
             services.AddAutoMapper(typeof(Startup));
+            services.Configure<JwtSettings>(Configuration.GetSection("Jwt"));
+
+            services.AddAuth(jwtSettings);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -70,7 +81,7 @@ namespace Friends
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuth();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

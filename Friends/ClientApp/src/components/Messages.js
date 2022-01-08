@@ -52,7 +52,14 @@ export class Messages extends Component {
   }
 
   async populateWeatherData() {
-    const response = await fetch('/api/Message');
+    var bearer = 'Bearer '+ 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWY4MDMwNS0xM2MyLTRlOGEtN2QxMy0wOGQ5ZDA4Zjg3MTIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdEB0ZXN0LmNvbSIsImp0aSI6IjI2MjJkZThmLTk2NjItNDA0OC1hMWQxLWI0YWE3ZjA3YTZmNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjFmODAzMDUtMTNjMi00ZThhLTdkMTMtMDhkOWQwOGY4NzEyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbiJdLCJleHAiOjE2NDQxNDYyNzAsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQzMzIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQ0MzMyIn0.ryiyhdYsc_G4cx040c4a7DwiF1g9mScULPR4qsZ7Lm0';
+    const response = await fetch('/api/Message',
+      {
+        headers: {
+          'Authorization': bearer,
+          'Content-Type' : 'application/json'
+        }
+      });
     const data = await response.json();
     this.setState({ messages: data, loading: false });
   }

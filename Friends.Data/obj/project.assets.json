@@ -1587,6 +1587,9 @@
       "Friends.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Stores": "5.0.13"
+        },
         "compile": {
           "bin/placeholder/Friends.Core.dll": {}
         },

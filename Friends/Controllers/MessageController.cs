@@ -7,12 +7,14 @@ using Friends.Core.Models;
 using Friends.Core.Services;
 using Friends.Resources;
 using Friends.Validators;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Friends.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
