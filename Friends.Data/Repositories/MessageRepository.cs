@@ -17,6 +17,12 @@ namespace Friends.Data.Repositories
             _dbContext = context;
         }
 
+        public async Task<IEnumerable<Message>> GetAllWithRecepientAsync(int userId)
+        {
+            return await _dbContext.Messages
+                .Where(x => x.MessageToId == userId)
+                .ToListAsync();
+        }
 
         public async Task<IEnumerable<Message>> GetAllWithUserAsync()
         {

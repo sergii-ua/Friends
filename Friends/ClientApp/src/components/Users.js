@@ -1,13 +1,13 @@
 import { CreateUser } from './CreateUser';
+import { CreateMessage } from './CreateMessage';
 import React, { useEffect, useState } from "react";
-
-
 
 const Users = () => {
   
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalCreateUser, setModalCreateUser] = useState(false);
+  const [modalSendMessage, setModalSendMessage] = useState(false);
 
   useEffect(() => {
     console.log(users);
@@ -23,7 +23,11 @@ const Users = () => {
   }
 
   const openModal = () => setModalCreateUser(true);
-  const closeModal = () => setModalCreateUser(false);
+  const closeModal = ()=> {
+    setModalCreateUser(false);
+    setModalSendMessage(false);
+  }
+  const openModalSendMessage = () => setModalSendMessage(true); 
   let contents = loading
     ? <p><em>Loading...</em></p>
     : <table className='table table-striped' aria-labelledby="tabelLabel">
@@ -41,8 +45,8 @@ const Users = () => {
             <td>{user.userId}</td>
             <td>{user.firstName}</td>
             <td>{user.lastName}</td>
-            <td><span >Send Message</span> <a href="#">Edit</a> 
-            <span onClick={openModal}>Create</span>
+            <td><span onClick={openModalSendMessage}>Send Message </span> <a href="#">Edit </a> 
+            <span onClick={openModal}>Create </span>
             <span onClick={()=>deleteUser(user.userId)}>Delete</span></td>
           </tr>
         )}
@@ -62,7 +66,8 @@ const Users = () => {
     <div>
       <h1 id="tabelLabel">Users</h1>
       {modalCreateUser && <CreateUser populateUserData={populateUserData} closeModal={closeModal} />}
-      <p>This component demonstrates fetching data from the server.</p>
+      {modalSendMessage && <CreateMessage openModalSendMessage={openModalSendMessage} populateUserData={populateUserData} closeModal={closeModal} />}
+      <p></p>
       {contents}
     </div>
   );

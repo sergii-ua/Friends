@@ -14,7 +14,7 @@ namespace Friends.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
@@ -29,6 +29,14 @@ namespace Friends.Controllers
         public async Task<ActionResult<IEnumerable<Message>>> GetAllMessages()
         {
             var messages = await _messageService.GetAllWithUser();
+            var messageResources = _mapper.Map<IEnumerable<Message>,
+                IEnumerable<MessageResource>>(messages);
+            return Ok(messageResources);
+        }
+        [HttpGet("recepient")]
+        public async Task<ActionResult<IEnumerable<Message>>> GetAllMessagesMine(int id)
+        {
+            var messages = await _messageService.GetAllByReceiver(id);
             var messageResources = _mapper.Map<IEnumerable<Message>,
                 IEnumerable<MessageResource>>(messages);
             return Ok(messageResources);
