@@ -1,63 +1,71 @@
-import React, { Component } from 'react';
 import { CreateUser } from './CreateUser';
+import React, { useEffect, useState } from "react";
 
-export class Users extends Component {
-  static displayName = Users.name;
 
-  constructor(props) {
-    super(props);
-    this.state = { users: [], loading: true, modalCreateUser: false };
-    this.closeModal = this.closeModal.bind(this);
+
+const Users = () => {
+  
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [modalCreateUser, setModalCreateUser] = useState(false);
+
+  useEffect(() => {
+    console.log(users);
+    populateUserData()
+  }, []);
+  const deleteUser = (id) => {
+    console.log(id);
+    setUsers(users.filter(user=>user.userId !== id))
+    //console.log(filter);
+    fetch(`https://localhost:44332/api/user/${id}`, {
+  method: 'DELETE',
+  });
   }
 
-  componentDidMount() {
-    this.populateWeatherData();
-  }
-  openModal() {
-    console.log("openModal");
-    this.setState({ modalCreateUser: true });
-  };
-  closeModal() {
-    console.log("closeModal");
-    this.setState({ modalCreateUser: false });
-  }
-  render() {
-    let contents = this.state.loading
-      ? <p><em>Loading...</em></p>
-      : <table className='table table-striped' aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th>User Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Actions</th>
+  const openModal = () => setModalCreateUser(true);
+  const closeModal = () => setModalCreateUser(false);
+  let contents = loading
+    ? <p><em>Loading...</em></p>
+    : <table className='table table-striped' aria-labelledby="tabelLabel">
+      <thead>
+        <tr>
+          <th>User Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map(user =>
+          <tr key={user.userId}>
+            <td>{user.userId}</td>
+            <td>{user.firstName}</td>
+            <td>{user.lastName}</td>
+            <td><span >Send Message</span> <a href="#">Edit</a> 
+            <span onClick={openModal}>Create</span>
+            <span onClick={()=>deleteUser(user.userId)}>Delete</span></td>
           </tr>
-        </thead>
-        <tbody>
-          {this.state.users.map(users =>
-            <tr key={users.userId}>
-              <td>{users.userId}</td>
-              <td>{users.firstName}</td>
-              <td>{users.lastName}</td>
-              <td><a href="#">Send Message</a> <a href="#">Edit</a> <span onClick={() => this.setState({ modalCreateUser: true })}>Create</span> <a href="#">Delete</a></td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+        )}
+      </tbody>
+    </table>
 
-    return (
-      <div>
-        <h1 id="tabelLabel">Users</h1>
-        {this.state.modalCreateUser && <CreateUser closeModal={this.closeModal} />}
-        <p>This component demonstrates fetching data from the server.</p>
-        {contents}
-      </div>
-    );
-  }
 
-  async populateWeatherData() {
+  const populateUserData = async () => {
     const response = await fetch('/api/User');
     const data = await response.json();
-    this.setState({ users: data, loading: false });
+    setUsers(data);
+    setLoading(false);
+
   }
+
+  return (
+    <div>
+      <h1 id="tabelLabel">Users</h1>
+      {modalCreateUser && <CreateUser populateUserData={populateUserData} closeModal={closeModal} />}
+      <p>This component demonstrates fetching data from the server.</p>
+      {contents}
+    </div>
+  );
 }
+
+export default Users;

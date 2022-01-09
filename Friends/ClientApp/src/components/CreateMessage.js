@@ -1,35 +1,31 @@
 import React, { Component, useState } from 'react';
 
-export class SignIn extends Component {
+export class CreateUser extends Component {
   //static displayName = CreateUser.name;
 
   constructor(props) {
     super(props);
-    this.state = { Email: null, Password: null };
-    this.signIn = this.signIn.bind(this);
-    //this.handleClick = this.handleClick.bind(this);
-    this.updateEmail = this.updateEmail.bind(this);
-    this.updatePassword = this.updatePassword.bind(this);
+    this.state = { firstName: null, lastName: null };
+    this.createUser = this.createUser.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.updateInputFirst = this.updateInputFirst.bind(this);
+    this.updateInputLast = this.updateInputLast.bind(this);
   }
 
   componentDidMount() {
     //this.populateWeatherData();
   }
-signIn (event) {
-  event.preventDefault();
+createUser () {
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
-  const userObj = { Email:this.state.Email, Password:this.state.Password };
-  console.log(userObj);
-    fetch('https://localhost:44332/api/Auth/SignIn', {
+  const userObj = { firstName:this.state.firstName, lastName:this.state.lastName };
+    fetch('https://localhost:44332/api/User', {
       method: 'POST',
       headers: {"Content-Type": "application/json" },
       body: JSON.stringify(userObj)
-    }).then((response)=> {
-      return response.text();
-      //console.log(response);
-      
-    }).then(data=>localStorage.setItem("token", data))
+    }).then(()=> {
+      console.log("a new user is created");
+    })
   console.log('FORM SUBMIT');
 }
 
@@ -37,31 +33,30 @@ handleClick(){
   console.log('Success!')
 }
 
-updateEmail(event){
-  this.setState({Email : event.target.value})
-  console.log(event.target.value);
+updateInputFirst(event){
+  this.setState({firstName : event.target.value})
   }
-  updatePassword(event){
-    this.setState({Password : event.target.value})
+  updateInputLast(event){
+    this.setState({lastName : event.target.value})
     }
 
   render() {
     const {closeModal}=this.props;
     console.log(closeModal);
     return (
-      <div className="form-signin">
-        {/* <div className='button__container'>
+      <div className="form-create-user">
+        <div className='button__container'>
         <button className='button' onClick={this.handleClick}>
           Click Me
         </button>
-      </div> */}
-        <form onSubmit={this.signIn}>
+      </div>
+        <form onSubmit={this.createUser}>
           <div className="close" onClick={closeModal}>X</div>
           <div>
-            <input type="email" placeholder="Email" onChange={this.updateEmail}/>
+            <input type="text" placeholder="First Name" onChange={this.updateInputFirst}/>
           </div>
           <div>
-            <input type="text" placeholder="Password" onChange={this.updatePassword} />
+            <input type="text" placeholder="Last Name" onChange={this.updateInputLast} />
           </div>
           <button>Create</button>
         </form>

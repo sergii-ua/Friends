@@ -1,12 +1,12 @@
 import React, { Component, useState } from 'react';
 
-export class SignIn extends Component {
+export class SignUp extends Component {
   //static displayName = CreateUser.name;
 
   constructor(props) {
     super(props);
-    this.state = { Email: null, Password: null };
-    this.signIn = this.signIn.bind(this);
+    this.state = { Email: null, firstName: null, lastName: null, Password: null };
+    this.signUp = this.signUp.bind(this);
     //this.handleClick = this.handleClick.bind(this);
     this.updateEmail = this.updateEmail.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
@@ -15,21 +15,20 @@ export class SignIn extends Component {
   componentDidMount() {
     //this.populateWeatherData();
   }
-signIn (event) {
-  event.preventDefault();
+signUp () {
   // const [firstName, setFirstName] = useState('');
   // const [lastName, setLastName] = useState('');
-  const userObj = { Email:this.state.Email, Password:this.state.Password };
+  const userObj = { Email:this.state.Email, firstName:this.state.firstName,
+    lastName:this.state.lastName, Password:this.state.Password };
   console.log(userObj);
-    fetch('https://localhost:44332/api/Auth/SignIn', {
+    fetch('https://localhost:44332/api/Auth/SignUp', {
       method: 'POST',
       headers: {"Content-Type": "application/json" },
       body: JSON.stringify(userObj)
-    }).then((response)=> {
-      return response.text();
-      //console.log(response);
+    }).then(()=> {
+      console.log("account is created");
       
-    }).then(data=>localStorage.setItem("token", data))
+    })
   console.log('FORM SUBMIT');
 }
 
@@ -43,6 +42,7 @@ updateEmail(event){
   }
   updatePassword(event){
     this.setState({Password : event.target.value})
+    console.log(event.target.value);
     }
 
   render() {
@@ -61,7 +61,13 @@ updateEmail(event){
             <input type="email" placeholder="Email" onChange={this.updateEmail}/>
           </div>
           <div>
-            <input type="text" placeholder="Password" onChange={this.updatePassword} />
+            <input type="text" placeholder="First Name" onChange={this.updatePassword} />
+          </div>
+          <div>
+            <input type="text" placeholder="Last Name" onChange={this.updatePassword} />
+          </div>
+          <div>
+            <input type="password" placeholder="Password" onChange={this.updatePassword} />
           </div>
           <button>Create</button>
         </form>
