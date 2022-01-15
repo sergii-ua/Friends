@@ -44,3 +44,10 @@ code {
     top: 10px;
     cursor: pointer;
 }
+.form-label {
+    position: absolute;
+    top: 10px;
+    text-align: center;
+    left: 40%;
+    font-size: 20px;
+}

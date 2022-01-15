@@ -14,7 +14,7 @@ namespace Friends.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+    [Authorize]
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
@@ -51,6 +51,7 @@ namespace Friends.Controllers
             return Ok(musicResource);
         }
         [HttpPost("")]
+        [Authorize(Roles ="ADMIN")]
         public async Task<ActionResult<MessageResource>> CreateMessage([FromBody] SaveMessageResource saveMessageResource)
         {
             var validator = new SaveMessageResourceValidator();

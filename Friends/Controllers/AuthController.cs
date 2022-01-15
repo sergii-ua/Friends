@@ -35,7 +35,7 @@ namespace Friends.Controllers
             _jwtSettings = jwtSettings.Value;
         }
         [HttpPost("signup")]
-        public async Task<IActionResult> SignUp(AccountSignUpResource accountSignUpResource)
+        public async Task<IActionResult> SignUp([FromBody] AccountSignUpResource accountSignUpResource)
         {
             var user = _mapper.Map<AccountSignUpResource, Account>(accountSignUpResource);
 

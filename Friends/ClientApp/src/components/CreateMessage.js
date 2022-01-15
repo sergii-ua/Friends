@@ -23,7 +23,6 @@ export const CreateMessage = ({ closeModal }) => {
   useEffect(() => {
     console.log(users);
     populateUserData()
-    //setSender();
   }, []);
 
   const populateUserData = async () => {
@@ -31,13 +30,12 @@ export const CreateMessage = ({ closeModal }) => {
     const data = await response.json();
     setUsers(()=>data);
     console.log(data);
-    //setLoading(false);
   }
 
   const createMessage = (event) => {
     event.preventDefault();
     const requestBody = { messageBody, messageFromId, messageToId };
-    fetch('https://localhost:44332/api/Message', {
+    fetch('/api/Message', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody)
@@ -52,7 +50,7 @@ export const CreateMessage = ({ closeModal }) => {
       <form onSubmit={createMessage}>
         <div className="close" onClick={closeModal}>X</div>
         <div>
-        <label for="sender">From</label>
+        <label for="sender">From </label>
           <select name="sender" id="sender" onChange={updateValueSender}>
             {users.map(user => 
               <option value={user.firstName} id={user.userId}>{user.firstName} {user.lastName}</option>
@@ -63,7 +61,7 @@ export const CreateMessage = ({ closeModal }) => {
           <input type="text-area" id='messageBody' placeholder="Message" onChange={updateMessageBody} value={messageBody} />
         </div>
         <div>
-        <label for="recepient">To</label>
+        <label for="recepient">To </label>
           <select name="recepient" id="recepient" onChange={updateValueRecepient}>
             {users.map(user => 
               <option value={user.firstName} id={user.userId}>{user.firstName} {user.lastName}</option>

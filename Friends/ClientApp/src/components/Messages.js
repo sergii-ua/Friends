@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MessageItem } from './MessageItem';
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
@@ -22,6 +23,14 @@ const Messages = () => {
     setLoading(false);
   }
 
+  const editMessage = (id, messageBody, messageFromId, messageToId) => {
+    const message = messages.find(message => message.messageId === id);
+    message.messageBody = messageBody;
+    message.messageFromId = messageFromId;
+    message.messageToId = messageToId;
+    return setMessages([...messages]);
+  }
+
   let contents = loading
     ? <p><em>Loading...</em></p>
     : <table className='table table-striped' aria-labelledby="tabelLabel">
@@ -35,12 +44,15 @@ const Messages = () => {
       </thead>
       <tbody>
         {messages.map(message =>
-          <tr key={message.messageid}>
-            <td>{message.messageId}</td>
-            <td>{message.messageBody}</td>
-            <td>{message.sender.firstName} {message.sender.lastName}</td>
-            <td>{message.recepient.firstName} {message.recepient.lastName}</td>
-          </tr>
+          <MessageItem id={message.messageId}
+            messageBody={message.messageBody}
+            senderFirstName={message.sender.firstName}
+            senderLastName={message.sender.lastName}
+            recepientFirstName={message.recepient.firstName}
+            recepientLastName={message.recepient.lastName}
+            messageFromId={message.sender.userId}
+            messageToId={message.recepient.userId}
+            editMessage={editMessage} />
         )}
       </tbody>
     </table>
